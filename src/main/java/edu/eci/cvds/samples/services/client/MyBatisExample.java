@@ -27,6 +27,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper;
+import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper;
+import edu.eci.cvds.samples.entities.Item;
+import edu.eci.cvds.samples.entities.TipoItem;
 
 /**
  *
@@ -57,15 +60,33 @@ public class MyBatisExample {
     /**
      * Programa principal de ejempo de uso de MyBATIS
      * @param args
+     * @param idcli 
      * @throws SQLException 
      * 8888888
      */
-    public static void main(String args[]) throws SQLException {
+    public static void main(String args[] ) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
         SqlSession sqlss = sessionfact.openSession();
-        ClienteMapper cm = sqlss.getMapper(ClienteMapper.class);
-        System.out.println(cm.consultarClientes());
+        ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
+      //** consult of client with number document 
+        //System.out.println(cm.consultarClientes(123456));
         
+        //insert in table ItemRentado
+        java.util.Date d = new java.util.Date();  
+        java.util.Date d2 = new java.util.Date();  
+        java.sql.Date date1 = new java.sql.Date(d.getTime());
+        java.sql.Date date2 = new java.sql.Date(d2.getTime());
+        //cm.agregarItemRentadoACliente(66,2107356,4, date1, date2);
+        
+        //insert in table Item 
+        java.sql.Date date3 = new java.sql.Date(d.getTime());
+        ItemMapper im=sqlss.getMapper(ItemMapper.class);
+        TipoItem tipo = new TipoItem(2,"Accion");
+        Item item = new Item(tipo,7,"la comuna 13","eventos de la comuna 13 de medellin",date3,12000,"formato de renta","violencia");
+        //im.insertarItem(item);
+        
+        //** consult of item with number id 
+        //System.out.println(im.consultarItem(7));
         
         sqlss.commit();
         
