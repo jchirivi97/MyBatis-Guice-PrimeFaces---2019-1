@@ -37,6 +37,23 @@
             <artifactId>h2</artifactId>
             <version>1.4.191</version>
         </dependency>
+        
+        <dependency>
+ 			<groupId>com.google.inject</groupId>
+ 			<artifactId>guice</artifactId>
+ 			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quicktheories</groupId>
+			<artifactId>quicktheories</artifactId>
+			<version>0.25</version>
+			<scope>main</scope>
+		</dependency>
+		<dependency>
+ <groupId>com.google.inject.extensions</groupId>
+ <artifactId>guice-servlet</artifactId>
+ <version>3.0</version>
+</dependency>
     </dependencies>
     
     <build>
@@ -115,25 +132,6 @@
         								</versionRange>
         								<goals>
         									<goal>execute</goal>
-        								</goals>
-        							</pluginExecutionFilter>
-        							<action>
-        								<ignore></ignore>
-        							</action>
-        						</pluginExecution>
-        						<pluginExecution>
-        							<pluginExecutionFilter>
-        								<groupId>
-        									org.apache.maven.plugins
-        								</groupId>
-        								<artifactId>
-        									maven-clean-plugin
-        								</artifactId>
-        								<versionRange>
-        									[2.6.1,)
-        								</versionRange>
-        								<goals>
-        									<goal>clean</goal>
         								</goals>
         							</pluginExecutionFilter>
         							<action>
