@@ -33,6 +33,9 @@ public interface ClienteMapper {
      * @param i 
      * @return 
      */
-   public List<Cliente> consultarClientes(int i);
+   public List<Cliente> consultarClientes();
+   
+      
+   public void InsertarCliente (@Param("client") Cliente client);
     
 }

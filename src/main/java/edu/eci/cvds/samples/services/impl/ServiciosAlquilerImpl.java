@@ -20,25 +20,43 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Inject
    private ItemDAO itemDAO;
+   
+   @Inject
+   private ClienteDAO ClienteDAO;
 
    @Override
-   public int valorMultaRetrasoxDia(int itemId) {
-       throw new UnsupportedOperationException("Not supported yet.");
+   public int valorMultaRetrasoxDia(int itemId){
+	   throw new UnsupportedOperationException("Not supported yet.");
    }
 
    @Override
    public Cliente consultarCliente(long docu) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+	   try {
+		   return ClienteDAO.load((int)docu);
+	   }
+	   catch(PersistenceException exe) {
+		   throw new ExcepcionServiciosAlquiler("Error al consultar Cliente"+docu,exe);
+	   }
    }
 
    @Override
    public List<ItemRentado> consultarItemsCliente(long idcliente) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+	   try {
+		   return ClienteDAO.load((int) idcliente).getRentados();
+	   }
+	   catch(PersistenceException exe) {
+		   throw new ExcepcionServiciosAlquiler("Cliente No existe");
+	   }
    }
 
    @Override
    public List<Cliente> consultarClientes() throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+       try {
+    	  return ClienteDAO.loads(); 
+       }
+       catch(PersistenceException exe) {
+    	   throw new ExcepcionServiciosAlquiler("No hay clientes registrados");
+       }
    }
 
    @Override
