@@ -1,0 +1,11 @@
+Integrantes:
+
+--Jimmy Armando Chirivi Nivia
+
+GITHUB:
+
+https://github.com/jchirivi97/MyBatis-Guice-PrimeFaces---2019-1.git
+
+HEROKU:
+
+https://laboratorio-8-mybatis-guice.herokuapp.com/
